@@ -1,0 +1,1 @@
+The Pi 5 with 8GB RAM is an excellent choice for the database and messaging services. Databases like PostgreSQL benefit significantly from having more RAM available for caching, which dramatically improves query performance. This node will have ample resources to manage both the relational database and the message broker.1

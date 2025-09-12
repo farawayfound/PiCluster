@@ -1,0 +1,1 @@
+The Pi 5 with 4GB RAM is a suitable choice for the main web application. This allocation provides enough memory to handle the Node.js backend, serve the React frontend via Nginx, and manage a moderate number of concurrent user connections without becoming memory-constrained.

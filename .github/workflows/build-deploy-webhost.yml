@@ -1,0 +1,22 @@
+name: Build & Deploy Blazor
+on:
+  push:
+    paths: ['apps/pi-webhost-blazor/**']
+    branches: [main]
+jobs:
+  webhost:
+    runs-on: [self-hosted, pi-monitor]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with: { dotnet-version: '8.0.x' }
+      - name: Restore
+        run: dotnet restore apps/pi-webhost-blazor
+      - name: Publish
+        run: dotnet publish apps/pi-webhost-blazor/WebApp.csproj -c Release -o out/webhost
+      - name: Deploy
+        run: |
+          rsync -az --delete -e "ssh -F /home/runner/.ssh/config" \
+            out/webhost/ pi-webhost:/var/www/blazor/
+      - name: Restart service
+        run: ssh -F /home/runner/.ssh/config pi-webhost 'sudo systemctl restart blazor'

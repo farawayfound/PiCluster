@@ -1,0 +1,19 @@
+name: Apply DB Migrations
+on:
+  push:
+    paths: ['apps/pi-database/**']
+    branches: [main]
+jobs:
+  migrate:
+    runs-on: [self-hosted, pi-monitor]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ship migrations
+        run: rsync -az -e "ssh -F /home/runner/.ssh/config" apps/pi-database/migrations/ pi-database:/opt/migrations/
+      - name: Apply (remote psql)
+        run: |
+          ssh -F /home/runner/.ssh/config pi-database '
+            export PGPASSFILE=/home/deployer/.pgpass
+            for f in /opt/migrations/*.sql; do
+              echo ">> $f"; psql -h localhost -U <dbuser> -d <dbname> -f "$f";
+            done'

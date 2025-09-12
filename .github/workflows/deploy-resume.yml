@@ -1,0 +1,15 @@
+name: Deploy Resume
+on:
+  push:
+    paths: ['apps/pi-resume/**']
+    branches: [main]
+jobs:
+  deploy:
+    runs-on: [self-hosted, pi-monitor]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Sync
+        run: |
+          rsync -az --delete \
+            -e "ssh -F /home/runner/.ssh/config" \
+            apps/pi-resume/ pi-resume:/srv/resume/site/

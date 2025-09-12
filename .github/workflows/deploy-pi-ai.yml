@@ -1,0 +1,23 @@
+name: Deploy AI Service
+on:
+  push:
+    paths: ['apps/pi-ai/**']
+    branches: [main]
+jobs:
+  ai:
+    runs-on: [self-hosted, pi-monitor]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ship code
+        run: |
+          rsync -az --delete -e "ssh -F /home/runner/.ssh/config" \
+            apps/pi-ai/ pi-ai:/opt/pi-ai/app/
+      - name: Install deps & restart (remote)
+        run: |
+          ssh -F /home/runner/.ssh/config pi-ai '
+            cd /opt/pi-ai/app
+            python3 -m venv .venv
+            . .venv/bin/activate
+            pip install -U pip wheel
+            [ -f requirements.txt ] && pip install -r requirements.txt || true
+            sudo systemctl restart pi-ai'
