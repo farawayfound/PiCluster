@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>David Chui — Interactive Resume</title>
+  <meta name="description" content="Interactive, scroll‑animated resume for David Chui — Software Engineer, Azure/.NET, veteran, builder of resilient systems." />
+  <meta name="color-scheme" content="dark light" />
+  <style>
+    /* =========================
+       Design tokens & resets
+       ========================= */
+    :root{
+      --bg: #0b1020;
+      --bg-2: #0e162b;
+      --card: #0f1b37;
+      --ink: #e5edf7;
+      --muted: #a7b3cc;
+      --accent: #22d3ee; /* cyan-300 */
+      --accent-2: #60a5fa; /* blue-400 */
+      --ok: #10b981;
+      --warn: #f59e0b;
+      --ring: rgba(96,165,250,.5);
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(2,8,23,.35), inset 0 1px 0 rgba(255,255,255,.03);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font: 15px/1.55 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      color: var(--ink); background: radial-gradient(1200px 600px at 15% -10%, #172554 0, transparent 60%),
+                                radial-gradient(1000px 500px at 110% 10%, #0ea5e9 0, transparent 50%),
+                                linear-gradient(180deg, var(--bg) 0, var(--bg-2) 100%);
+      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+    }
+    a{color:inherit}
+    img{max-width:100%; display:block}
+    .container{width:min(1100px, 92vw); margin-inline:auto}
+    .section{padding: 56px 0}
+    .grid{display:grid; gap:20px}
+    .card{background: rgba(15,27,55,.75); border-radius: var(--radius); box-shadow: var(--shadow); border:1px solid rgba(255,255,255,.06)}
+    .chip{display:inline-flex; align-items:center; gap:8px; padding:.35rem .6rem; border-radius:999px; background:rgba(255,255,255,.06); color:var(--muted); font-weight:600; font-size:12px}
+    .muted{color:var(--muted)}
+    .h1{font-weight:800; font-size: clamp(28px, 5vw, 48px); letter-spacing:.3px; line-height:1.1}
+    .h2{font-weight:800; font-size: clamp(22px, 3.8vw, 32px); letter-spacing:.2px}
+    .h3{font-weight:700; font-size: 18px}
+    .lead{font-size: clamp(16px,2.5vw,18px); color: var(--muted)}
+    .buttons{display:flex; flex-wrap:wrap; gap:12px}
+    .btn{--bg: #0ea5e9; --bg2:#22d3ee; position:relative; border:0; color:#001428; font-weight:800; letter-spacing:.2px;
+         background: linear-gradient(180deg, var(--bg), var(--bg2)); padding:.8rem 1.05rem; border-radius:999px; cursor:pointer;
+         box-shadow: 0 8px 20px rgba(34,211,238,.25);}
+    .btn.secondary{--bg:#1f2937; --bg2:#111827; color:#dbeafe; box-shadow: 0 8px 24px rgba(0,0,0,.35); border:1px solid rgba(255,255,255,.06)}
+    .btn:focus-visible{outline:2px solid var(--ring); outline-offset:3px}
+    .btn .icon{width:18px; height:18px; display:inline-block; vertical-align:middle; margin-right:8px}
+
+    /* ===== Hero ===== */
+    header.hero{padding: 64px 0 24px}
+    .hero-wrap{display:grid; gap:18px; align-items:start}
+    .hero-top{display:flex; align-items:center; justify-content:space-between; gap:16px}
+    .avatar{width:78px; height:78px; border-radius:50%; background:linear-gradient(180deg,#3b82f6,#22d3ee); padding:3px}
+    .avatar > img{
+      height:100%;
+      width:100%;
+      border-radius: inherit;
+      object-fit: cover;
+      display:block;
+    }
+
+    /* ===== Section headers ===== */
+    .section-head{display:flex; align-items:end; justify-content:space-between; gap:12px; margin-bottom:16px}
+    .section-head .muted{font-size:14px}
+
+    /* ===== Timeline ===== */
+    .timeline{position:relative; margin:0; padding-left:0; list-style:none}
+    .timeline::before{content:""; position:absolute; top:0; bottom:0; left:16px; width:2px; background:linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.04))}
+    .tl-item{position:relative; padding-left:48px; margin:14px 0}
+    .tl-item::before{content:""; position:absolute; left:8px; top:12px; width:18px; height:18px; border-radius:50%; background:radial-gradient(circle at 35% 35%, var(--accent), var(--accent-2)); box-shadow: 0 0 0 3px rgba(96,165,250,.18)}
+
+    /* ===== Accordion card ===== */
+    .acc{border-radius: var(--radius); background: rgba(17,26,45,.65); border:1px solid rgba(255,255,255,.06);}
+    .acc-hd{display:grid; grid-template-columns: 1fr auto; gap:16px; align-items:start; padding:16px 16px 10px 16px}
+    .acc-title{margin:0}
+    .acc-meta{display:flex; flex-wrap:wrap; gap:8px}
+    .acc-toggle{background:none; border:0; color:var(--muted); cursor:pointer; font-weight:700; display:inline-flex; align-items:center; gap:8px}
+    .acc-toggle .chev{width:10px; height:10px; transform: rotate(0deg); transition: transform .25s ease}
+    .acc[aria-expanded="true"] .acc-toggle .chev{transform: rotate(180deg)}
+    .acc-panel{overflow:hidden; max-height:0; transition: max-height .45s cubic-bezier(.2,.8,.25,1);}
+    .acc-panel-inner{padding:0 16px 16px}
+    .acc-panel .bullets{margin:12px 0 0; padding-left:18px}
+
+    .logo{width:44px; height:44px; border-radius:10px; background:#0a1224; display:block; overflow:hidden; border:1px solid rgba(255,255,255,.06)}
+
+    /* ===== Certifications grid ===== */
+    .certs{display:grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap:14px}
+    .cert{padding:14px; border-radius: var(--radius); border:1px solid rgba(255,255,255,.08); background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02))}
+    .cert .row{display:flex; align-items:center; justify-content:space-between; gap:8px}
+
+    /* ===== Skills ===== */
+    .chips{display:flex; flex-wrap:wrap; gap:10px}
+
+    /* ===== Reveal on scroll ===== */
+    .reveal{opacity:0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease}
+    .reveal.is-visible{opacity:1; transform:none}
+
+    /* ===== Footer ===== */
+    footer{padding:40px 0 70px; color:var(--muted)}
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      .acc-panel{transition: none}
+      .reveal{opacity:1; transform:none}
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container hero-wrap">
+      <div class="hero-top">
+        <div style="display:flex; gap:14px; align-items:center">
+          <div class="avatar">
+            <img src="./assets/headshots/headshot.jpg" alt="David Chui headshot" loading="lazy" decoding="async">
+          </div>
+          <div>
+            <div class="chip" title="Denver / Remote">📍 Denver, CO</div>
+            <div class="chip" title="Last updated">Last updated: Aug 2025</div>
+          </div>
+        </div>
+        <div class="buttons">
+          <a class="btn" data-link="email" href="mailto:david.chui@outlook.com">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 6.5A2.5 2.5 0 0 1 4.5 4h15A2.5 2.5 0 0 1 22 6.5v11A2.5 2.5 0 0 1 19.5 20h-15A2.5 2.5 0 0 1 2 17.5v-11Zm2.4-.5 7.6 5.3L19.6 6H4.4Zm15.1 2.1-6.8 4.8a2 2 0 0 1-2.3 0L3.6 8.1V17.5c0 .28.22.5.5.5h15a.5.5 0 0 0 .5-.5V8.1Z"/></svg>
+            Email
+          </a>
+          
+          <a class="btn secondary" data-link="linkedin"
+             href="https://www.linkedin.com/in/david-chui-co" target="_blank" rel="noopener">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.85-2.05 3.8-2.05C19.4 8 22 10.06 22 14v9h-4v-8.02c0-1.91-.03-4.37-2.66-4.37-2.66 0-3.07 2.08-3.07 4.23V23h-4V8z"/></svg>
+            LinkedIn
+          </a>
+          
+          <a class="btn secondary" data-link="github" title="GitHub"
+             href="https://github.com/farawayfound" target="_blank" rel="noopener">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.26.79-.57v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.36-1.3-1.72-1.3-1.72-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.74 1.27 3.4.97.1-.77.41-1.27.75-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.2-3.09-.12-.29-.52-1.46.11-3.05 0 0 .98-.31 3.2 1.18.93-.26 1.93-.39 2.92-.39.99 0 2 .13 2.93.39 2.22-1.5 3.2-1.18 3.2-1.18.63 1.6.23 2.77.11 3.05.75.8 1.2 1.83 1.2 3.09 0 4.43-2.69 5.41-5.25 5.7.42.36.8 1.07.8 2.16v3.2c0 .32.21.68.8.56A11.51 11.51 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>
+            GitHub
+          </a>
+          
+          <a class="btn secondary" data-link="resume_pdf" title="Download Resume PDF"
+             href="downloads/resumes/Long%20Form%20Resume.pdf">
+            ⬇︎ Download PDF
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h1 class="h1">David Chui</h1>
+        <p class="lead">Tenacious software engineer & veteran. I stabilize and scale mission‑critical C#/.NET and Azure systems, then make them faster, safer, and easier to ship. Completed B.S. (Finance & Information Systems) in Aug 2025 to bridge engineering with financial strategy.</p>
+        <div class="chips" style="margin-top:10px">
+          <span class="chip">C#/.NET</span>
+          <span class="chip">Azure</span>
+          <span class="chip">SQL</span>
+          <span class="chip">Kubernetes</span>
+          <span class="chip">PowerShell</span>
+          <span class="chip">Python</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- EXPERIENCE -->
+    <section class="section container">
+      <div class="section-head">
+        <h2 class="h2">Experience</h2>
+        <span class="muted">Click each card to expand details</span>
+      </div>
+      <ol class="timeline">
+        <!-- HCHB -->
+        <li class="tl-item reveal">
+          <article class="acc" aria-expanded="false">
+            <div class="acc-hd">
+              <div>
+                <h3 class="acc-title h3">Technical Engineer II — HomeCare HomeBase (Hearst Health)</h3>
+                <div class="acc-meta">
+                  <span class="chip">Jul 2022 – Jul 2025</span>
+                  <span class="chip">C#/.NET</span>
+                  <span class="chip">Azure</span>
+                  <span class="chip">SQL</span>
+                  <span class="chip">K8s</span>
+                </div>
+              </div>
+              <button class="acc-toggle" aria-controls="exp-hchb" aria-expanded="false">
+                <img class="chev" alt="expand" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='%23a7b3cc'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"/>
+                <span>Details</span>
+              </button>
+            </div>
+            <div id="exp-hchb" class="acc-panel" role="region" aria-labelledby="exp-hchb-label">
+              <div class="acc-panel-inner">
+                <div class="grid" style="grid-template-columns: 56px 1fr; align-items:start; gap:14px">
+                  <a class="logo" title="Add /assets/logos/hchb.jpg" href="#">
+                    <img alt="HCHB logo" data-src="./assets/logos/hchb.jpg" />
+                  </a>
+                  <ul class="bullets">
+                    <li><strong>SDLC ownership:</strong> Delivered fixes and enhancements across a large C#/.NET codebase powering regulated home‑health operations; authored tests and guarded performance during releases.</li>
+                    <li><strong>Diagnostics:</strong> Performed deep root‑cause analysis with Splunk + Azure logs; squashed exceptions (<code>NullReferenceException</code>, <code>InvalidOperationException</code>, ORM/SQL), eliminating noisy alerts.</li>
+                    <li><strong>Reliability:</strong> Sustained ~99.9% uptime of HA services; coordinated incident command, wrote blameless post‑mortems, and implemented preventive SLOs and alerts.</li>
+                    <li><strong>Data operations:</strong> Engineered HIPAA‑aligned DB work (T‑SQL, migrations, backfills, client merges) and optimized heavy stored procedures for reporting paths.</li>
+                    <li><strong>Medication platform:</strong> Worked with First DataBank (FDB) integrations and MAR/eMAR features; resolved issues with med sources and cross‑episode carryover.</li>
+                    <li><strong>Automation:</strong> Built PowerShell + ServiceNow + SQL tooling that pulled state‑reporting cases, deduped by metadata, and exported Excel indexes; saved hundreds of hours of manual effort.</li>
+                    <li><strong>Tooling:</strong> Used JAMS for after‑hours report runs; created tracing to debug multi‑proc PMR exports and CCD generation paths.</li>
+                    <li><strong>Customer delivery:</strong> Shipped 30+ billable projects and created docs/runbooks that cut escalations across ~600 high‑priority requests.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+        </li>
+
+        <!-- Convercent -->
+        <li class="tl-item reveal">
+          <article class="acc" aria-expanded="false">
+            <div class="acc-hd">
+              <div>
+                <h3 class="acc-title h3">Software Engineer — Convercent by OneTrust</h3>
+                <div class="acc-meta">
+                  <span class="chip">Jun 2021 – Jul 2022</span>
+                  <span class="chip">.NET</span>
+                  <span class="chip">Azure</span>
+                  <span class="chip">SQL</span>
+                </div>
+              </div>
+              <button class="acc-toggle" aria-controls="exp-conv" aria-expanded="false">
+                <img class="chev" alt="expand" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='%23a7b3cc'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"/>
+                <span>Details</span>
+              </button>
+            </div>
+            <div id="exp-conv" class="acc-panel" role="region">
+              <div class="acc-panel-inner">
+                <div class="grid" style="grid-template-columns: 56px 1fr; align-items:start; gap:14px">
+                  <a class="logo" title="Add /assets/logos/onetrust.jpg" href="#">
+                    <img alt="Convercent logo" data-src="./assets/logos/onetrust.jpg" />
+                  </a>
+                  <ul class="bullets">
+                    <li>Resolved ~300+ engineering tickets/year across a .NET monolith; improved stability and UX while paying down tech debt.</li>
+                    <li>Executed precise SQL changes for GDPR/data integrity; partnered with product & QA to ship safely each sprint.</li>
+                    <li>Investigated end‑to‑end defects across APIs, DB, Azure infra, and 3rd‑party services (Postman, SendGrid, telemetry) and documented fixes.</li>
+                    <li>Built an extensible localization framework enabling new language rollouts without code churn.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+        </li>
+
+        <!-- USAF -->
+        <li class="tl-item reveal">
+          <article class="acc" aria-expanded="false">
+            <div class="acc-hd">
+              <div>
+                <h3 class="acc-title h3">Structural Engineer — United States Air Force</h3>
+                <div class="acc-meta">
+                  <span class="chip">May 2017 – Dec 2020</span>
+                  <span class="chip">Leadership</span>
+                  <span class="chip">Project Mgmt</span>
+                </div>
+              </div>
+              <button class="acc-toggle" aria-controls="exp-usaf" aria-expanded="false">
+                <img class="chev" alt="expand" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='%23a7b3cc'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"/>
+                <span>Details</span>
+              </button>
+            </div>
+            <div id="exp-usaf" class="acc-panel" role="region">
+              <div class="acc-panel-inner">
+                <div class="grid" style="grid-template-columns: 56px 1fr; align-items:start; gap:14px">
+                  <a class="logo" title="Add /assets/logos/usaf.jpg" href="#">
+                    <img alt="USAF emblem placeholder" data-src="./assets/logos/usaf.jpg" />
+                  </a>
+                  <ul class="bullets">
+                    <li>Hands‑on structural maintenance across sheet metal, welding, carpentry, masonry, and finishes; rotated among specialized teams quarterly.</li>
+                    <li>Led crews of three; prioritized tasks and resources to keep mission facilities operable under tight timelines.</li>
+                    <li>Selected for USAF Honor Guard; executed 35+ ceremonial events and 8 high‑profile Color Guard processions.</li>
+                    <li>Designed a 15‑ft training‑hall mural and the official 99th CES commemorative coin.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+        </li>
+
+        <!-- Photographer -->
+        <li class="tl-item reveal">
+          <article class="acc" aria-expanded="false">
+            <div class="acc-hd">
+              <div>
+                <h3 class="acc-title h3">Wedding Photographer — Agaba Studios</h3>
+                <div class="acc-meta">
+                  <span class="chip">Feb 2016 – Feb 2017</span>
+                  <span class="chip">Customer Experience</span>
+                </div>
+              </div>
+              <button class="acc-toggle" aria-controls="exp-photo" aria-expanded="false">
+                <img class="chev" alt="expand" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='%23a7b3cc'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"/>
+                <span>Details</span>
+              </button>
+            </div>
+            <div id="exp-photo" class="acc-panel" role="region">
+              <div class="acc-panel-inner">
+                <ul class="bullets">
+                  <li>Consulted with couples, planned shoots, and directed groups to capture time‑critical moments smoothly.</li>
+                  <li>Delivered consistent client satisfaction through clear communication and schedule management.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </li>
+
+        <!-- Krate -->
+        <li class="tl-item reveal">
+          <article class="acc" aria-expanded="false">
+            <div class="acc-hd">
+              <div>
+                <h3 class="acc-title h3">Co‑Founder & CTO — Krate Technologies LLC</h3>
+                <div class="acc-meta">
+                  <span class="chip">Dec 2013 – Oct 2016</span>
+                  <span class="chip">Hardware + Software</span>
+                </div>
+              </div>
+              <button class="acc-toggle" aria-controls="exp-krate" aria-expanded="false">
+                <img class="chev" alt="expand" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='%23a7b3cc'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"/>
+                <span>Details</span>
+              </button>
+            </div>
+            <div id="exp-krate" class="acc-panel" role="region">
+              <div class="acc-panel-inner">
+                <ul class="bullets">
+                  <li>Scaled a boutique tech startup; led full lifecycle delivery from consult to handoff across B2B/B2C projects.</li>
+                  <li>Rapid prototyping with CAD, 3D printing, and embedded (Arduino) for bespoke client solutions under tight constraints.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </li>
+      </ol>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="section container">
+      <div class="section-head">
+        <h2 class="h2">Education</h2>
+        <span class="muted">Tap to expand details</span>
+      </div>
+      <ol class="timeline">
+        <li class="tl-item reveal">
+          <article class="acc" aria-expanded="false">
+            <div class="acc-hd">
+              <div>
+                <h3 class="acc-title h3">B.S. Finance (Info Systems focus) — University of Colorado Denver</h3>
+                <div class="acc-meta">
+                  <span class="chip">Completed Aug 2025</span>
+                </div>
+              </div>
+              <button class="acc-toggle" aria-controls="edu-ucd" aria-expanded="false">
+                <img class="chev" alt="expand" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='%23a7b3cc'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"/>
+                <span>Coursework & highlights</span>
+              </button>
+            </div>
+            <div id="edu-ucd" class="acc-panel" role="region">
+              <div class="acc-panel-inner">
+                <p class="muted">Interdisciplinary curriculum bridging finance, analytics, and systems design, applied to real‑world engineering problems.</p>
+                <ul class="bullets">
+                  <li><strong>Finance:</strong> Corporate Finance, Investments/Portfolio Mgmt, Markets & Institutions, International Business/Finance, Capital Budgeting (NPV/IRR), Risk & Return, Project Valuation.</li>
+                  <li><strong>IS:</strong> Database Mgmt (SQL), Web Design, Enterprise Architecture, Information Security & Privacy, Python Programming, Project Management (PMBOK/Agile).</li>
+                  <li><strong>Capstones & projects:</strong> Built data pipelines and dashboards; authored market‑entry and operations plans integrating tech, cost, and risk tradeoffs.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </li>
+        <li class="tl-item reveal">
+          <article class="acc" aria-expanded="false">
+            <div class="acc-hd">
+              <div>
+                <h3 class="acc-title h3">Applied Information Technology Certification — Embry‑Riddle (2021)</h3>
+              </div>
+              <button class="acc-toggle" aria-controls="edu-erau" aria-expanded="false">
+                <img class="chev" alt="expand" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='%23a7b3cc'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"/>
+                <span>Focus</span>
+              </button>
+            </div>
+            <div id="edu-erau" class="acc-panel" role="region">
+              <div class="acc-panel-inner">
+                <ul class="bullets">
+                  <li>Cloud technologies, Linux CLI, scripting (Python/Bash), and scalable solutions architecture.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </li>
+        <li class="tl-item reveal">
+          <article class="acc" aria-expanded="false">
+            <div class="acc-hd">
+              <div>
+                <h3 class="acc-title h3">A.A.S. Construction Technology — Community College of the Air Force (2020)</h3>
+              </div>
+              <button class="acc-toggle" aria-controls="edu-ccaf" aria-expanded="false">
+                <img class="chev" alt="expand" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='%23a7b3cc'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"/>
+                <span>Focus</span>
+              </button>
+            </div>
+            <div id="edu-ccaf" class="acc-panel" role="region">
+              <div class="acc-panel-inner">
+                <ul class="bullets">
+                  <li>Project mgmt, CPM scheduling, QA, blueprint analysis, estimation, and regulatory compliance.</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </li>
+      </ol>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section class="section container">
+      <div class="section-head">
+        <h2 class="h2">Technical Certifications</h2>
+        <span class="muted">Recent highlights</span>
+      </div>
+      <div class="certs reveal">
+        <div class="cert">
+          <div class="row"><strong>Microsoft AZ‑204: Azure Developer Associate</strong><span class="chip">2024</span></div>
+          <p class="muted">App Services, Functions, Container Apps/Registry, API Mgmt, security & DevOps best practices.</p>
+        </div>
+        <div class="cert">
+          <div class="row"><strong>Microsoft DP‑900: Azure Data Fundamentals</strong><span class="chip">2023</span></div>
+          <p class="muted">Data Factory, Cosmos DB, Databricks, Data Lake; core analytics on Azure.</p>
+        </div>
+        <div class="cert">
+          <div class="row"><strong>Oracle OCP: Java SE 11 Developer</strong><span class="chip">2021</span></div>
+          <p class="muted">Advanced Java, concurrency, Streams/Lambdas, JDBC, secure coding.</p>
+        </div>
+        <div class="cert">
+          <div class="row"><strong>Microsoft AZ‑900: Azure Fundamentals</strong><span class="chip">2021</span></div>
+          <p class="muted">Core cloud concepts (IaaS/PaaS/SaaS), governance, cost mgmt, security.</p>
+        </div>
+        <div class="cert">
+          <div class="row"><strong>MTA: Software Development Fundamentals</strong><span class="chip">2020</span></div>
+          <p class="muted">Data structures, OOP, algorithms, and web fundamentals.</p>
+        </div>
+      </div>
+    </section>
+
+<!-- SKILLS (grouped) -->
+<section class="section container" id="skills">
+<div class="section-head">
+<h2 class="h2">Proficiencies</h2>
+<span class="muted">Knowledgeable and experienced in these <strong>Languages</strong> • <strong>Tools</strong> • <strong>Skills</strong></span>
+</div>
+<div class="grid reveal" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); align-items:start">
+<div class="card" style="padding:16px">
+<div class="h3" style="margin-bottom:8px">Languages</div>
+<div class="chips">
+<span class="chip">C#</span><span class="chip">Java</span><span class="chip">Python</span><span class="chip">T‑SQL</span><span class="chip">PowerShell</span><span class="chip">HTML/CSS/JS</span>
+</div>
+</div>
+<div class="card" style="padding:16px">
+<div class="h3" style="margin-bottom:8px">Tools</div>
+<div class="chips">
+<span class="chip">.NET</span><span class="chip">Visual Studio</span><span class="chip">SSMS</span><span class="chip">Git</span><span class="chip">Azure</span><span class="chip">Azure DevOps</span>
+<span class="chip">Kubernetes</span><span class="chip">Rancher</span><span class="chip">Jira</span><span class="chip">ServiceNow</span><span class="chip">Splunk</span><span class="chip">Postman</span>
+<span class="chip">JAMS</span>
+</div>
+</div>
+<div class="card" style="padding:16px">
+<div class="h3" style="margin-bottom:8px">Skills</div>
+<div class="chips">
+<span class="chip">Agile/Scrum</span><span class="chip">Incident Mgmt</span><span class="chip">Root Cause Analysis</span><span class="chip">Performance Tuning</span>
+<span class="chip">Data Modeling</span><span class="chip">CI/CD</span><span class="chip">SRE Mindset</span><span class="chip">Stakeholder Comms</span><span class="chip">Mentorship</span><span class="chip">Documentation</span>
+</div>
+</div>
+</div>
+</section>
+
+
+<!-- DOWNLOADS (auto-rendered from /data/downloads.json) -->
+<section class="section container" id="downloads-section" hidden>
+<div class="section-head">
+<h2 class="h2">Downloads & Docs</h2>
+<span class="muted">Served from <code>/downloads</code>; links centralized in <code>/data</code></span>
+</div>
+<div id="downloads" class="grid"></div>
+</section>
+
+    <!-- DOWNLOADS (auto-rendered from /data/downloads.json) -->
+    <section class="section container" id="downloads-section" hidden>
+      <div class="section-head">
+        <h2 class="h2">Downloads & Docs</h2>
+        <span class="muted">Served from <code>/downloads</code>; links centralized in <code>/data</code></span>
+      </div>
+      <div id="downloads" class="grid"></div>
+    </section>
+
+    <!-- OPTIONAL PROJECTS placeholder -->
+    <section class="section container">
+      <div class="section-head">
+        <h2 class="h2">Projects</h2>
+        <span class="muted">Add a few portfolio pieces here</span>
+      </div>
+      <div class="card reveal" style="padding:18px">
+        <p class="muted">Coming soon: a filterable gallery with detailed modals (kept tiny via vanilla JS). Drop thumbnails in <code>/assets/projects</code>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div class="grid">
+      <div>
+        <div class="muted">© <span id="year"></span> David Chui. Built for a Raspberry Pi 3 with Caddy + Cloudflare Tunnel.</div>
+        <div class="muted" style="margin-top:6px">Health check: <a data-link="health">/health.txt</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Util: prefers-reduced-motion
+    const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Accordion behavior with animated height
+    const setPanelHeight = (panel, open) => { panel.style.maxHeight = open ? panel.scrollHeight + 'px' : '0px'; };
+
+    document.querySelectorAll('.acc').forEach((card, idx) => {
+      const btn = card.querySelector('.acc-toggle');
+      const panel = card.querySelector('.acc-panel');
+      const id = panel.id || `acc-panel-${idx}`;
+      panel.id = id; btn.setAttribute('aria-controls', id);
+      card.setAttribute('aria-expanded', 'false');
+      btn.addEventListener('click', () => {
+        const open = card.getAttribute('aria-expanded') === 'true';
+        card.setAttribute('aria-expanded', String(!open));
+        btn.setAttribute('aria-expanded', String(!open));
+        setPanelHeight(panel, !open);
+      });
+      setPanelHeight(panel, false);
+    });
+
+    // Reveal on scroll (IntersectionObserver)
+    const revealItems = document.querySelectorAll('.reveal');
+    if (!REDUCED && 'IntersectionObserver' in window){
+      const io = new IntersectionObserver((entries) => {
+        for (const e of entries){ if (e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); } }
+      }, { rootMargin: '0px 0px -10% 0px' });
+      revealItems.forEach(el => io.observe(el));
+    } else { revealItems.forEach(el => el.classList.add('is-visible')); }
+
+    // Lazy load images with data-src
+    const lazyImgs = document.querySelectorAll('img[data-src]');
+    const loadImg = img => { img.src = img.dataset.src; img.removeAttribute('data-src'); };
+    if ('IntersectionObserver' in window){
+      const imgIO = new IntersectionObserver((entries) => {
+        for (const e of entries){ if (e.isIntersecting){ loadImg(e.target); imgIO.unobserve(e.target); } }
+      });
+      lazyImgs.forEach(img => imgIO.observe(img));
+    } else { lazyImgs.forEach(loadImg); }
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // CENTRAL LINKS & DOWNLOADS (editable in /data)
+    async function hydrateLinks(){
+      try{
+        const res = await fetch('./data/links.json', {cache:'no-store'});
+        if(!res.ok) throw new Error('links.json missing');
+        const L = await res.json();
+        const q = (name) => document.querySelector(`[data-link="${name}"]`);
+        if(L.email){ q('email').href = `mailto:${L.email}`; }
+        if(L.linkedin){ q('linkedin').href = L.linkedin; q('linkedin').target = '_blank'; q('linkedin').rel = 'noopener'; }
+        if(L.github){ q('github').href = L.github; q('github').target = '_blank'; q('github').rel = 'noopener'; }
+        if(L.resume_pdf){ q('resume_pdf').href = L.resume_pdf; }
+        if(L.health){ const h = q('health'); if(h) h.href = L.health; }
+      }catch(e){ console.warn('Link hydration skipped:', e.message); }
+    }
+
+    async function renderDownloads(){
+      try{
+        const res = await fetch('./data/downloads.json', {cache:'no-store'});
+        if(!res.ok) throw new Error('downloads.json missing');
+        const items = await res.json();
+        if(!Array.isArray(items) || !items.length) return;
+        const wrap = document.getElementById('downloads');
+        document.getElementById('downloads-section').hidden = false;
+        items.forEach(it => {
+          const card = document.createElement('a');
+          card.href = it.path; card.className = 'card'; card.style.padding = '14px';
+          card.innerHTML = `<div class="grid" style="grid-template-columns:1fr auto; align-items:center">
+            <div>
+              <div class="h3" style="font-size:16px; font-weight:700">${it.label || 'Download'}</div>
+              ${it.desc ? `<div class="muted" style="margin-top:6px">${it.desc}</div>` : ''}
+            </div>
+            <span class="chip">${(it.tag||'PDF')}</span>
+          </div>`;
+          wrap.appendChild(card);
+        });
+      }catch(e){ console.info('No downloads.json found; skipping list.'); }
+    }
+
+    hydrateLinks();
+    renderDownloads();
+  </script>
+</body>
+</html>
