@@ -1,0 +1,65 @@
+# David Chui — Candidate Master Profile (RAG Ground Truth)
+Last updated: 2025-09-25
+
+## Identity & Contact
+- Name: David Chui
+- Location: Denver, CO (USA)
+- Phone: (303) 520-2666
+- Email: david.chui@outlook.com
+- LinkedIn: linkedin.com/in/david-chui-co
+- GitHub: github.com/farawayfound
+
+## Professional Summary
+Tenacious software engineer and Technical Engineer II (health-tech) with military discipline (USAF) and startup leadership (CTO). Strong in C#/.NET, SQL, Azure DevOps, observability (Splunk), and automation. Delivered 30+ billable customer projects and 600+ escalated cases resolved while building a Python/PowerShell-driven reporting automation that saves 500+ hours per year. Kubernetes and Kafka incident response experience. Fluent in English, French, and Chinese.
+
+## Roles & Timeline
+- Technical Engineer II — HomeCare HomeBase by Hearst Health (Jul 2022 – Jul 2025)
+  - .NET/SQL debugging; ServiceNow + Azure DevOps
+  - Splunk triage; Azure Data Warehouse analysis; on-call/major incident response
+  - Kubernetes/Kafka/Scheduler ops; postmortems; HIPAA-compliant customer DB isolation
+  - 30+ billable projects; 600+ escalated cases; automation saving 500+ hrs/yr
+- Software Engineer — Convercent by OneTrust (Jun 2021 – Jul 2022)
+  - 300+ Tier‑2 and 10 Tier‑4 tickets; SP optimization; C# fixes
+  - Java/i18n framework enabling 3 new languages for 400k+ users
+  - Templates/playbooks for Tier‑1/CSM; Azure DevOps code review
+- Software Engineer Intern — Microsoft Software & Systems Academy (Dec 2020 – May 2021)
+- Structural Engineer — U.S. Air Force (May 2017 – Dec 2020)
+- Co‑founder/CTO — Krate Technologies LLC (Dec 2013 – Oct 2016)
+
+## Education
+- B.S. in Finance (Information Systems focus), University of Colorado Denver — 2025
+- Applied Information Technology / Cloud App Dev, Embry‑Riddle AU — 2021
+- A.A.S. Construction Technology, Community College of the Air Force — 2020
+
+## Certifications
+- Microsoft Azure Developer (AZ‑204) — Issued Jun 2024 (exp. Jul 2025)
+- Microsoft Azure Data Fundamentals (DP‑900) — Issued Jul 2023
+- Microsoft Azure Fundamentals (AZ‑900) — Issued Mar 2021
+- Oracle Java SE 11 Developer — Issued Apr 2021
+- MTA: Software Development Fundamentals — Issued Nov 2020
+
+## Technical Stack
+- Languages: C#, T‑SQL, PowerShell, Python, Java, HTML/CSS, JavaScript
+- Platforms/Tools: .NET Framework, SSMS, Visual Studio, Azure DevOps, Git, ServiceNow
+- Observability/Infra: Splunk, Kubernetes (Rancher), Kafka, JAMS Scheduler, Azure Data Warehouse
+- Soft Skills: Agile SDLC, ownership under pressure, customer communications, mentorship
+- Spoken Languages: English, French, Chinese
+
+## Signature Achievements
+- Built Python + PowerShell + ServiceNow API + T‑SQL automation; >500 hours saved/year; deterministic runs, audit logging, JAMS scheduling.
+- Orchestrated major-incident restores across Kubernetes/Kafka and job schedulers to protect healthcare operations.
+- Delivered 30+ billable projects end‑to‑end and resolved 600+ escalations with reusable KBs/playbooks.
+- Built Java localization framework shipping 3 new languages to 400k+ users; reduced code churn via pipeline improvements.
+
+## References (direct & peers)
+- Scott Kobel (HCHB): skobel3879@yahoo.com | 980‑322‑6922
+- Greg Foxworthy (Convercent/OneTrust): 720‑594‑8672
+- Joel Etherton (ex‑Dir Eng, Convercent): joel.etherton@gmail.com | 720‑593‑1120
+- Luke Bachelder (HCHB): lbachelder@hchb.com | 903‑456‑6885
+- Jaziel Pauda (Convercent): jazielpauda@gmail.com | 720‑252‑0210
+
+## Portfolio Topics
+- Urban planning & mobility; infrastructure macroeconomics; geothermal energy; trip‑behavior analysis.
+
+## Personality (workplace signal)
+Calm under pressure; collaborative and assertive when needed; high activity level at project inception; uses structure to sustain momentum; balanced empathy and directness.

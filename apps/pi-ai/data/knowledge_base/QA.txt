@@ -1,0 +1,157 @@
+1. Personal & Contact Information
+
+Q: What is your full name?
+A: David Chui. 
+
+Q: Where are you located?
+A: Denver, CO. 
+
+Q: What is your contact information?
+A:
+Phone: (303) 520-2666 
+Email: david.chui@outlook.com 
+LinkedIn: linkedin.com/in/david-chui-co 
+
+Q: What is your personal background?
+A: I was born in Xi’an, China, grew up in Montreal, Canada, and attended High School in Texas. I am a full-time software engineer, a student, a husband, and a new dad. I am fluent in English, French, and Chinese. 
+
+2. Professional Summary & Career Goals
+
+Q: Can you give me a brief professional summary?
+A: I am a tenacious software engineer who combines the disciplined problem-solving of a US Air Force veteran with the agile innovation of a startup CTO and the enterprise-scale experience of a senior engineer. I specialize in architecting and stabilizing mission-critical C#.NET and Azure solutions, particularly in regulated industries. I am augmenting my technical expertise with a B.S. in Finance and Information Systems to drive technology in the Fintech and Insurtech sectors. 
+
+Q: What are you looking for in your next role?
+A: After nearly three years in my current role, I am earning my bachelor's degree to help me take the next step in my career. I am seeking to leverage my combined experience in software engineering, finance, and information systems to drive the next generation of technology in the Fintech and Insurtech sectors. 
+
+3. Professional Experience
+
+Q: What is your most recent role?
+A: My most recent role was as a Technical Engineer II at HomeCare HomeBase by Hearst Health, from July 2022 to July 2025. 
+
+Q: What were your responsibilities at HomeCare HomeBase (HCHB)?
+A: At HCHB, I owned the full software development lifecycle for a C#.NET monolith in a healthcare tech environment.  My responsibilities included:
+
+Project & Feature Delivery: I managed the entire SDLC for billable projects, feature development, and bug fixes, from change management in ServiceNow to deployment and documentation. I successfully delivered over 30 billable customer projects. 
+
+Automation: I engineered an automation platform using PowerShell, Python, the ServiceNow API, and SQL that saved over 500 hours of manual work annually by automating compliance reporting. This system included input validation, error handling, and audit logging. 
+
+System Stability & Incident Management: I helped ensure 99.9% uptime by orchestrating incident response, managing Kubernetes clusters, Kafka pods, and CronJobs. I conducted root cause analysis using Splunk and Azure Data Warehouse to resolve critical exceptions. 
+
+Customer Support: I resolved over 600 escalated ServiceNow cases and contributed to internal and customer-facing knowledge bases to create repeatable solutions. I was part of the Tier-3 triage team, participated in on-call rotations, and drove communications during major incidents. 
+
+Q: Tell me about your role at Convercent by OneTrust.
+A: I was a Software Engineer at Convercent by OneTrust from June 2021 to July 2022. I supported enterprise software built on the .NET framework hosted in Azure.  My key contributions were:
+
+Ticket Resolution: I resolved over 300 Tier 2 Jira tickets and 10 Tier 4 tickets with a 98% acceptance rate, which involved data fixes, stored procedure optimization, and C# code changes. 
+
+Localization: I developed scripts and a scalable Java framework that enabled the platform to launch in 3 new languages, supporting over 400,000 international users. 
+
+Team Enablement: I created reusable templates and diagnostic playbooks for Tier 1 and Customer Success (CSM) teams, which reduced repeat escalations and engineering workload for basic data corrections. 
+
+Q: What was your role in the US Air Force?
+A: I served as a Structural Engineer in the US Air Force from May 2017 to December 2020. Our shop was responsible for maintaining all real property on Nellis Air Force Base. 
+
+Technical Skills: I was trained in sheet metal fabrication, welding, carpentry, masonry, and locksmithing. 
+
+Leadership: As a Senior Airman, I led independent crews of three, where I optimized workflow, prioritized work, and mentored junior airmen in technical and personal development. 
+
+Honor Guard: I was selected for the USAF Honor Guard, where I conducted 27 military funeral ceremonies and 8 high-profile Color Guard events. 
+
+Q: Can you describe your experience at Krate Technologies LLC?
+
+A: I was the Co-Founder and Chief Technology Officer (CTO) of Krate Technologies LLC, a startup 3D printing, CAD, and fabrication firm, from December 2013 to October 2016. 
+
+Role: I co-founded the company of 4 total employees, formulated the business roadmap, managed projects from requirements to review, and served as the technical expert. 
+
+Projects: We served both B2B and B2C clients. Notable projects include building a servo-driven, 3D-printed Iron Man suit for a private client and a 3D scanner for UT graduate research at the Blanton Museum. We also printed architectural models for Matt Fajkus Architecture. 
+
+4. Education & Certifications
+Q: What is your educational background?
+A:
+Bachelor of Science in Finance (Information Systems Focus) from the University of Colorado, Denver. Expected graduation Summer 2025 with a 3.7 GPA. 
+
+Applied Information Technology Certification from Embry Riddle Aeronautical University (2021). 
+
+Associate of Applied Science in Construction Technology from the Community College of the Air Force (2020). 
+
+Q: What technical certifications do you hold?
+A:
+
+Microsoft Certified: Azure Developer Associate (AZ-204) 
+
+Microsoft Certified: Azure Data Fundamentals (DP-900) 
+
+Oracle Certified Professional: Java SE 11 Developer 
+
+Microsoft Certified: Azure Fundamentals (AZ-900) 
+
+MTA: Software Development Fundamentals 
+
+Q: What skills did you learn from your degree at CU Denver?
+A: The curriculum blended financial theory with technology.  Key skills include:
+
+Finance: Asset valuation, financial modeling, capital budgeting (NPV, IRR), portfolio theory, and foreign exchange risk management. 
+
+Information Systems: Relational database design (SQL), systems architecture, cybersecurity principles, project management (Agile/Scrum), and Python for data analysis. 
+
+Business: Financial statement analysis, quantitative analysis, process optimization, corporate governance, and strategic management (SWOT). 
+
+5. Skills & Expertise
+Q: What are your technical skills?
+A:
+
+Programming Languages: C#, Java, T-SQL, Powershell, Python, HTML/CSS, Javascript. 
+
+Tools & Platforms: .NET framework, SSMS, Visual Studio, Jira/ServiceNow, Splunk, Kubernetes, Rancher, Azure DevOps, GIT, JAMS scheduler. 
+
+Q: Can you provide specific examples of your experience with log analysis?
+A: Yes. I have:
+
+Built targeted Splunk searches and alerts for triaging production issues.
+
+Written Python scripts to format logs (flatten JSON, extract XML, sanitize CSV) for bulk ingestion. 
+
+Parsed exception patterns and stack traces into normalized fields for trend analysis. 
+
+Q: Can you provide examples of your product support experience?
+A: Yes. I have:
+
+Resolved 300+ engineering tickets at OneTrust with a ~98% acceptance rate, translating technical findings into customer-friendly updates. 
+
+Ran Tier-3 triage at HCHB, coordinating across development, DBA, and infrastructure teams during major incidents. 
+
+Authored reusable diagnostic playbooks that reduced repeat escalations. 
+
+6. Personal Attributes & Work Style
+Q: How would you describe your work style and personality?
+A: Based on a Big Five personality assessment, I am someone who:
+
+Is Active & Driven: I enjoy being busy, managing multiple tasks, and reacting quickly to changing requirements. I do what is expected and will put in extra time when it suits the situation. 
+
+Is a Balanced Leader: I can take the lead in a group but am also comfortable letting others take charge. I am confident interacting with a team and am not afraid of people critically analyzing my ideas. 
+
+Is Calm and Optimistic: I am generally joyful, optimistic, and unlikely to become worried or stressed. I do not lose my temper easily and can stay calm, which helps avoid most team conflict. 
+
+Is Dependable but Flexible: I can be counted on to attend meetings and complete tasks. I am reasonably cautious, considering both sides of a decision before acting. 
+
+Is Collaborative: I make friends easily and am comfortable working in groups. I can work alone or in a group and succeed in either situation. I find a balance between my own needs and considering the feelings of others. 
+
+Q: What are your soft skills?
+A: My soft skills include Agile Methodologies, software lifecycle support, resource management, supportive leadership, and nurturing mentorship. I am also fluent in French and Chinese. 
+
+7. References
+Q: Can you provide professional references?
+A: Yes. My direct manager references are:
+
+Greg Foxworthy (OneTrust/Convercent): 720-594-8672 
+
+Scott Kobel (HCHB): skobel3879@yahoo.com, 980-322-6922 
+
+Q: Can you provide additional references if they cannot be reached?
+A: Yes. If they are unavailable, you can contact:
+
+Joel Etherton (former Director of Engineering, Convercent): joel.etherton@gmail.com, 720-593-1120
+
+Luke Bachelder (HCHB co-worker): lbachelder@hchb.com, 903-456-6885
+
+Jaziel Pauda (Convercent co-worker): jazielpauda@gmail.com, 720-252-0210

@@ -65,8 +65,6 @@ to team members who may prefer a different style of work, whether that is clean 
 Self-Efficacy: You tend to be fairly confident in your abilities. Look to others to see how they complete tasks successfully in
 order to improve on your own skills and remind yourself of things you have accomplished in order to continue to build your
 confidence and excel in your tasks.
-Self-Discipline: You often have little trouble carrying out your plans but may sometimes waste time procrastinating. To
-ensure you execute your tasks without wasting time, make a task list for each working hour of the day and stick to it.
 
 Altruism: You seem to find a balance between attending to your own needs and emotions, and considering the opinions and
 feelings of others. Maintain your ability to stay focused on your own responsibilities while being mindful and prepared to step
@@ -80,9 +78,6 @@ Morality: You tend to be genuine and follow the rules most of the time. When wor
 working towards a shared goal and try not to take advantage of others, as it will negatively affect everyone in the team.
 Sympathy: You can sympathize with many people but not all. Working in a team, you will come across unique backgrounds
 and situations so be mindful of other members' situations or circumstances that you might not normally be sympathetic to.
-Trust: You tend to be suspicious of others and can doubt their intentions. This is a helpful defense mechanism, and in holding
-team members accountable. If you are too untrusting of team members, however, you will never form genuine bonds and you
-could burn yourself out micro managing or duplicating work.
 
 Adventurousness: You tend to seek out new and creative ways to accomplish a task. Exploit this trait by helping to
 brainstorm innovative approaches to a problem. Keep in mind that extensive exploration can be distracting in tight timelines
@@ -98,6 +93,3 @@ basic aspects of a task required for your team to succeed. Encourage your team t
 accomplishing simple but important deliverables.
 Liberalism: You tend to be open to liberal ideologies, but do see the value in tradition and established ways of thinking. Use
 this flexibility to connect to different-minded individuals and help others to be open to contrasting perspectives.
-Sentimentality: You tend to be aware of your emotions and the emotions of others. Use this ability to try to recognize
-situations where it is important to connect and empathize with others or where it is key to help the team focus on the tasks at
-hand.
