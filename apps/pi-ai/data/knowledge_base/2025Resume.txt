@@ -1,0 +1,100 @@
+David Chui
+A tenacious software engineer dedicated to optimizing user experiences and  driving technical excellence by leveraging disciplined problem-solving skills honed in military service and innovative leadership from startup environments.
+
+Denver, CO
+(303) 520-2666
+david.chui@outlook.com
+
+Professional Career
+
+Technical Engineer II – HomeCare HomeBase by Hearst Health
+July 2022 - July 2025
+Owned billable projects, feature development, and bug fixes through the entire development and release cycle involving change management in ServiceNow, source control in Azure DevOps, setting up unique customer environments and databases (for HIPAA data isolation) locally and debugging C# .Net framework monolith and SQL databases in Visual Studio and Azure Data Warehouse, and system monitoring in Splunk, Prometheus, and Opsgenie.
+Orchestrated efforts to resolve Major Incidents and outages by managing Kubernetes clusters, load balancing and restarting nodes, resetting Kafka pods, reschedule/submit CronJobs and SQL jobs, recompiling procs, and postmortem analysis.
+Engineered automation tools for reporting, leveraging ServiceNow API, PowerShell, Python, and SQL to dynamically create agency reports to their unique specifications for regulatory compliance. This increases reliability while saving 500+ hours annually.
+Completed 30+ billable customer projects. Projects include unique enhancement request, data extraction/report/audit, or database merge after acquisition including effort estimation, planning, coordination with customers/internal teams, development, testing/QA, implementation, and documentation/education.
+Resolved 600+ escalated Service Now cases while contributing to both internal and customer-facing knowledge bases and creating repeatable solutions when appropriate.
+
+Software Engineer – Convercent by OneTrust
+June 2021 - July 2022
+Supported software hosted in Azure and built on .NET framework by debugging C# code, resolving database errors, optimizing stored procedures, and shepherding changes   through code review into production with emphasis on stakeholder and customer needs.
+Resolved 300+ Tier 2 Jira tickets and 10 Tier 4 tickets including data fixes, stored procedure optimization, and code changes with over 98% acceptance rate.
+Developed scripts and generated targeted data to localize 3 new languages enabling 
+over 400k users to navigate our platform seamlessly.
+Created reliable patterns and templates for Tier 1 and CSM use, reducing workload 
+on teammates for basic data corrections and configuration toggles.
+Conducted triage sessions to estimate severity and annotate efforts.
+
+Software Engineer Intern – Microsoft Software and Systems Academy
+Dec. 2020 - May 2021
+Advanced 19-week technical training course for veterans transitioning into tech careers.
+Completed 360 live classroom hours in addition to personal projects mastering fundamentals of C#, T-SQL, ASP.Net MVC, HTML/CSS and Azure.
+
+Structural Engineer – US Air Force
+May 2017 - Dec. 2020
+Our shop maintained all real property on Nellis Air Force Base. Mentored junior airmen to achieve technical competency as well as personal development.
+Trained for sheet metal fabrication, welding, carpentry, locksmithing, masonry, etc.
+Senior Airman - Led independent crews of three airmen. Optimized workflow and efficiency in my team. Prioritized work according to impact and resource availability.
+Honor Guard - Conducted 27 military funeral ceremonies and 8 high profile events.
+
+Co-Founder, Chief Engineer – Krate Technologies LLC
+Dec. 2013 - Oct. 2016
+Start-up 3D printing, CAD, and fabrication firm aimed to fill a local, low cost need for      rapid turnaround prototyping and embedded systems solutions. 4 total employees.
+Formulate business roadmap, manage projects from defining requirements to review.
+Technical expert, learning on the job daily and adapting to different problems.
+Certifications
+
+Azure Certified Developer (AZ-204, PD-900, AZ-900)
+Software Development C# (Microsoft)
+Java SE 11 Developer (Oracle)
+
+Education
+
+Finance with focus on Information Systems  University of Colorado, Denver
+Bachelor of Science - 2025
+Cloud Application Developer 
+Embry Riddle AU, CO Springs
+Technical Certification - 2021
+Construction Management
+Air Force Community College - Associate’s - 2020
+
+Languages
+
+C#
+Java
+T-SQL
+Powershell
+Python
+HTML/CSS
+Javascript
+
+Tools/Platforms
+
+.NET framework
+SSMS
+Visual Studio
+Jira/ServiceNow
+Splunk
+Kubernetes
+Rancher
+Azure DevOps
+GIT
+JAMS scheduler
+
+Soft Skills
+
+Agile Methodologies
+Software lifecycle support
+Resource Management
+Supportive Leadership
+Nurturing mentorship
+Fluent in French
+Fluent in Chinese
+
+Projects
+github.com/farawayfound
+
+LinkedIn:
+linkedin.com/in/david-chui-co
+
+

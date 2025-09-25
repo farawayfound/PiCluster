@@ -11,7 +11,7 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "db")
 EMBEDDING_MODEL_NAME = "all-MiniLM-L6-v2"
 LM_STUDIO_BASE_URL = "http://127.0.0.1:1234/v1"
-LM_STUDIO_MODEL_ID = "qwen/qwen3-4b-thinking-2507"
+LM_STUDIO_MODEL_ID = "qwen/qwen3-4b-2507"
 
 def main():
     print("--- Initializing Chatbot ---")

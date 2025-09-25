@@ -1,0 +1,29 @@
+Direct Manager references: 
+
+Greg Foxworthy from my time at OneTrust (Convercent): I do not have his email but his phone # is 720-594-8672.
+
+Scott Kobel from my time at HCHB: skobel3879@yahoo.com , 980-322-6922
+
+If those two cannot be reached, we can try the following:
+
+Joel Etherton, former Director of Engineering at Convercent: joel.etherton@gmail.com, 720-593-1120
+
+Luke Bachelder, HCHB co-worker: lbachelder@hchb.com, 903-456-6885
+Jaziel Pauda, Convercent co-worker: jazielpauda@gmail.com, 720-252-0210
+
+Below are some examples of my experience with each of the desired knowledge areas:
+
+Log Analysis (JSON / XML / CSV)
+Built targeted Splunk searches and alerts to triage production issues across .NET services.
+Wrote Python scripts to mass-format logs: flatten nested JSON, extract XML, and sanitize CSV edge cases (embedded commas/quotes/newlines) for bulk ingestion and side-by-side diffs.
+Parsed exception patterns and noisy stack traces into normalized fields for trend analysis and regression checks.
+Product Support / CSM responsibilities
+Resolved 300+ engineering tickets at OneTrust with ~98% acceptance, translating technical findings into clear, customer-friendly updates and KBs that empowered Tier-1/CSM teams.
+Ran Tier-3 triage at HCHB, coordinating across dev/DBA/infra; participated in on-call/major incidents, driving comms and handoffs until resolution.
+Authored reusable templates/diagnostic playbooks that reduced repeat escalations and improved resolution times.
+Python — HCHB State Report Automation
+Delivered a compliance reporting automation built on Python that saved 500+ hours/year by orchestrating data pulls (ServiceNow API), parsing JSON payloads, driving parameterized T-SQL scripts for final outputs, shaping to CSV/Excel, and shipping to end user.
+Implemented input validation, error handling, and audit logging to make runs deterministic and supportable; integrated with JAMS scheduler.
+Java — Convercent Localization Framework
+Implemented a scalable Java framework (message catalogs/resource bundles, fallback locales, extraction scripts), enabling launch in 3 new languages and supporting 400k+ international users.
+Optimized build/pipeline steps so new locales could ship without code churn.

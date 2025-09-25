@@ -5,7 +5,7 @@ Denver, CO
 david.chui@outlook.com
 EXPERIENCE
 Software Engineer – Convercent by OneTrust
-June 2021 - Present
+June 2021 - June 2022
 Supported enterprise grade software by resolving code bugs, fixing database errors and
 shepherding changes through code review into production through hotfixes or regular
 deployment schedules with emphasis on stakeholder and customer needs.
