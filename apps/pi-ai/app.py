@@ -1,5 +1,5 @@
 import os
-from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings # Updated import
 from langchain_openai import ChatOpenAI
 from langchain.prompts import PromptTemplate
@@ -9,8 +9,9 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 # --- Configuration ---
 # Define paths and model names
 DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "db")
-EMBEDDING_MODEL_NAME = "qwen3-4b-RAGmodel"
-LM_STUDIO_BASE_URL = "http://127.0.0.1:1234"
+EMBEDDING_MODEL_NAME = "all-MiniLM-L6-v2"
+LM_STUDIO_BASE_URL = "http://127.0.0.1:1234/v1"
+LM_STUDIO_MODEL_ID = "qwen/qwen3-4b-thinking-2507"
 
 def main():
     print("--- Initializing Chatbot ---")
@@ -29,12 +30,26 @@ def main():
     # --- 3. Connect to the Local LLM via LM Studio ---
     # The ChatOpenAI class can be used to connect to any OpenAI API-compatible server.
     print(f"Connecting to LLM at: {LM_STUDIO_BASE_URL}")
-    llm = ChatOpenAI(base_url=LM_STUDIO_BASE_URL, api_key="not-required")
-
+    llm = ChatOpenAI(
+        base_url=LM_STUDIO_BASE_URL,           # NOTE: includes /v1
+        api_key="lm-studio",                   # any non-empty string
+        model=LM_STUDIO_MODEL_ID,              # must match LM Studio “API identifier”
+        temperature=0.0,                       # deterministic for recruiter use
+        max_tokens=512,                        # adjust as needed
+        timeout=120,
+    )
+    # (Optional) sanity check the LLM connectivity before wiring RAG:
+    try:
+        _ = llm.invoke("Say 'ok' if you can read this.")
+        print("LLM connectivity: OK")
+    except Exception as e:
+        print("LLM connectivity failed:", e)
+        return
+    
     # --- 4. Create the RAG Prompt Template ---
     # This is the most important part for controlling the AI's behavior.
     # We instruct it to ONLY use the provided context and to be honest if it doesn't know.
-    template = """
+    template = """s
     You are a professional assistant for David Chui. Your task is to answer questions about his skills,
     experience, and projects based ONLY on the following context provided.
     If the context does not contain the answer, you MUST say "I do not have enough information to answer that question."
