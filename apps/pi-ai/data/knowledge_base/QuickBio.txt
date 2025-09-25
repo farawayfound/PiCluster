@@ -1,0 +1,42 @@
+I’m a Colorado-based software engineer and USAF veteran who likes building useful things and getting outside. When I’m not shipping code or tinkering with my Raspberry Pi cluster, you’ll usually find me on a mountain bike, a snowboard, or behind a camera in the Front Range. I’m currently in Ken Caryl (southwest Denver), and I care a lot about people-centric cities, resilient systems, and projects that make everyday life run a little smoother.
+
+Quick Fun Facts
+
+Weekend routine: ride the hogbacks, tune a derailleur, then chase golden-hour light with a vintage camera.
+
+Favorite resorts: Keystone, Winter Park, Breckenridge (tree runs, side-hits, and long laps = happy legs).
+
+I treat bike maintenance like debugging: isolate, reproduce, fix, test, repeat.
+
+Fluent in English, French, and Chinese.
+
+Coffee order: whatever lets me sit outside and talk gear, trails, or transit.
+
+Where I’ve Lived
+
+Xi’an, China → Montréal, Canada → Texas → Las Vegas → Denver, Colorado
+All that moving taught me to adapt quickly and appreciate good transit, great food, and communities built for people.
+
+What I’m Building (selected projects)
+
+Pi Cluster + Personal Site/AI Chatbot — a small, self-hosted cluster running my interactive resume/“Ask Me Anything” bot, plus room for lightweight ML/RAG experiments.
+
+Trail & Travel Tech — secure, low-overhead homelab services (Pi-hole, monitoring, remote access) for road trips and trail days.
+
+Automation for Boring Stuff — scripting to format logs, crunch data, and generate reports so the team can focus on real problems.
+
+Writing & Research — essays on people-first urban design, trip behavior, and how small infrastructure choices shape daily life.
+
+Work, Safely Summarized
+
+Engineer & Problem-Solver: I’ve supported and stabilized large .NET/SQL systems, built automation that saves teams serious time, and handled on-call incidents with calm, methodical triage.
+
+Team Mindset: clear comms, reproducible fixes, and good docs so the next person moves faster.
+
+Hobbies that Stick
+
+Mountain biking: techy climbs, flowy descents, and suspension nerding.
+
+Snowboarding: lapping groomers on storm-reset days, hunting for soft stashes in the trees.
+
+Photography: landscapes and candid moments; I repair older film cameras for fun and shoot with them, too.
