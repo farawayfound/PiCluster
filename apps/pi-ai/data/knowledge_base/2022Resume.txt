@@ -1,0 +1,94 @@
+David Chui
+Tenacious software engineer with military discipline and startup leadership.
+Denver, CO
+(303) 520-2666
+david.chui@outlook.com
+EXPERIENCE
+Software Engineer – Convercent by OneTrust
+June 2021 - Present
+Supported enterprise grade software by resolving code bugs, fixing database errors and
+shepherding changes through code review into production through hotfixes or regular
+deployment schedules with emphasis on stakeholder and customer needs.
+• Resolved 300+ Tier 2 Jira tickets and 10 Tier 4 tickets including data fixes, stored
+procedure optimization, and code changes with over 98% acceptance rate.
+• Created scripts and generated targeted data to localize 3 new languages enabling over
+400k users to navigate our platform seamlessly.
+• Created reliable patterns and templates for Tier 1 and CSM use, reducing workload on
+teammates to perform basic data corrections.
+• Conducted triage sessions to estimate severity and annotate efforts.
+• Used Azure DevOps repositories for code review and source control.
+• Compiled knowledge and methodologies for team training and reference.
+Software Engineer Intern – Microsoft Software and Systems Academy
+Dec. 2022 - May 2021
+MSSA is an advanced 19-week technical training course by Microsoft with Embry Riddle
+Aeronautical University. The program leverages college courses with the goal of preparing
+veterans for technical opportunities in cloud application development.
+• Studied the software development lifecycle and how to use it to successfully develop
+various console-based and graphical applications using Visual Studio.
+• Learned how to use SQL for CRUD operations to databases using MS SQL Server.
+• Completed 360 live classroom hours in addition to personal projects mastering
+fundamentals of C#, T-SQL, ASP.Net MVC, HTML/CSS and Azure.
+Structural Engineer – US Air Force
+May 2017 - Dec. 2020
+Our shop maintained all real property on Nellis Air Force Base. The broad field of work
+required versatility and adaptability. Mentored junior airmen to achieve technical
+competency as well as personal development.
+• Trained for sheet metal fabrication, welding, carpentry, locksmithing, etc
+• Senior Airman - Led independent crews of three airmen. Optimized workflow and
+efficiency in my team. Prioritized work according to impact and resource availability.
+Delegated work based on team member’s proficiencies and expertise.
+• Honor Guard - Conducted 27 military funeral ceremonies and 8 high profile events.
+Co-Founder, Chief Engineer – Krate Technologies LLC
+Dec. 2013 - Oct. 2015
+Start-up 3D printing, CAD, and fabrication firm aimed to fill a local, low cost need for
+rapid turnaround prototyping and embedded systems solutions. 4 total employees.
+• Envisioned the business roadmap and led the technical team in developing solutions.
+• Orchestrated workflows, managed projects from defining requirements to review.
+• Built servo and motor driven 3D printed full IronMan armor for a private individual.
+• Built a 3D Scanner for UT graduate research at the Blanton Museum.
+• Technical expert, learning on the job daily and adapting to different problems.
+Worked around the clock, with no set schedule, fueled by caffeine and passion.
+Certifications
+• Java SE 11 Developer
+(Oracle)
+• Azure Developer
+(Microsoft).
+• Software Development C#
+(Microsoft)
+Languages
+• C#
+• Java
+• T-SQL
+• HTML/CSS
+• Javascript
+• JQuery/XML
+Tools
+• Asp.NET MVC
+• Blazor
+• SSMS
+• Visual Studio
+• Azure DevOps
+• Azure Analytics Service
+• Eclipse
+• GitHub
+Soft Skills
+• Agile Methodologies
+• Scrum framework
+• Software lifecycle support
+• Resource Management
+• Supportive Leadership
+• Nurturing mentorship
+• Fluent in French
+• Fluent in Chinese
+EDUCATION
+Finance with focus on Information Systems – University of Colorado, Denver
+Bachelor of Science - Exp. 2024
+Cloud Application Developer – Embry Riddle Aeronautical University
+Certification - 2021
+Construction Management – Community College of the Air Force
+Associate of Applied Science - 2020
+PROJECTS
+www.farawayfound.com
+github.com/farawayfound
+LinkedIn:
+linkedin.com/in/david-chui-co
