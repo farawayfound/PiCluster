@@ -8,7 +8,7 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Join the script's directory path with the relative path to the data folder
 # This creates a reliable path regardless of where you run the script from.
-DATA_PATH = os.path.join(script_dir, "data", "knowledge_base")
+DATA_PATH = os.path.join(script_dir, "data", "converted")
 
 print(f"Looking for documents in: {DATA_PATH}")
 
